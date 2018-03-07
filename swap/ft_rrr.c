@@ -1,31 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_p.c                                             :+:      :+:    :+:   */
+/*   ft_rrr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aorji <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/06 18:15:03 by aorji             #+#    #+#             */
-/*   Updated: 2018/03/06 18:15:04 by aorji            ###   ########.fr       */
+/*   Created: 2018/03/07 15:49:26 by aorji             #+#    #+#             */
+/*   Updated: 2018/03/07 15:49:29 by aorji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_pa(t_stack **a, t_stack **b)
+void	ft_rra(t_stack **a)
 {
-	t_stack *head;
-
-	if (ft_st_len(*b) < 1)
+	t_stack	*new;
+	t_stack	*run;
+	
+	if (ft_st_len(*a) < 2)
 		return ;
-	head = ft_stack_new();
-	head->data = (*b)->data;
-	head->next = (*a);
-	*b = (*b)->next;
-	*a = head;
+	new = ft_stack_new();
+	new->next = (*a);
+	run = new->next;
+	while (run->next->next)
+		run = run->next;
+	new->data = run->next->data;
+	run->next = NULL;
+	(*a) = new;
 }
 
-void	ft_pb(t_stack **a, t_stack **b)
+void	ft_rrb(t_stack **b)
 {
-	ft_pa(b, a);
+	ft_rra(b);
+}
+
+
+
+void	ft_rrr(t_stack **a, t_stack **b)
+{
+	ft_rra(a);
+	ft_rrb(b);
 }

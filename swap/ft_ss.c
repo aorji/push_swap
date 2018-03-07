@@ -25,13 +25,7 @@ void	ft_sa(t_stack **a)
 
 void	ft_sb(t_stack **b)
 {
-	int c;
-
-	if (ft_st_len(*b) < 2)
-		return;
-	c = (*b)->data;
-	(*b)->data = (*b)->next->data;
-	(*b)->next->data = c; 
+	ft_sa(b);
 }
 
 void	ft_ss(t_stack **a, t_stack **b)

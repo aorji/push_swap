@@ -23,7 +23,10 @@ void	ft_push(char **param)
 	len = i;
 	stack_a = ft_make_stack(param, len);
 	stack_b = NULL;
-	ft_pb(&stack_b, &stack_a);
+	ft_pb(&stack_a, &stack_b);
+	ft_pb(&stack_a, &stack_b);
+	ft_pb(&stack_a, &stack_b);
+	ft_rrb(&stack_b);
 	while (stack_a)
 	{
 		printf("a = %d\n", stack_a->data);
