@@ -12,6 +12,51 @@
 
 #include "push_swap.h"
 
+static void	ft_er1(int n, int n1, char *str)
+{
+	while (n > 9)
+		n /= 10;
+	if (n != *str - 48 || (int)ft_strlen(str) != ft_digitsize(n1))
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
+}
+
+static void	ft_er2(int n, int n1, char *str)
+{
+	n = -n;
+	while (n > 9)
+		n /= 10;
+	if (n != *(str + 1) - 48 || (int)ft_strlen(str) != ft_digitsize(n1))
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
+}
+
+void	ft_error(char *str, t_stack *stack)
+{
+	long n;
+	long n1;
+
+	n = ft_atoi(str);
+	n1 = n;
+	if (n >= 0)
+		ft_er1(n, n1, str);
+	if (n < 0)
+		ft_er2(n, n1, str);
+	while (stack)
+	{
+		if (stack->data == n1)
+		{
+			write(2, "Error\n", 6);
+			exit(1);
+		}
+		stack = stack->next;
+	}
+}
+
 t_stack	*ft_stack_new(void)
 {
 	t_stack	*new;
@@ -35,6 +80,7 @@ t_stack	*ft_make_stack(char **param, int len)
 	head = new;
 	while (i < len)
 	{
+		ft_error(param[i], head);
 		new->data = ft_atoi(param[i]);
 		if (i + 1 < len)
 			new->next = ft_stack_new();

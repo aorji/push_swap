@@ -12,31 +12,36 @@
 
 #include "push_swap.h"
 
-void	ft_push(char **param)
+void ft_pr_a(t_stack *stack_a)
 {
-	int i;
-	int len;
-	t_stack *stack_a;
-	t_stack *stack_b;
-
-	i = ft_count_param(param);
-	len = i;
-	stack_a = ft_make_stack(param, len);
-	stack_b = NULL;
-	ft_pb(&stack_a, &stack_b);
-	ft_pb(&stack_a, &stack_b);
-	ft_pb(&stack_a, &stack_b);
-	ft_rrb(&stack_b);
 	while (stack_a)
 	{
 		printf("a = %d\n", stack_a->data);
 		stack_a = stack_a->next;
 	}
-	while (stack_b)
+}
+
+void ft_pr_b(t_stack *stack_a)
+{
+	while (stack_a)
 	{
-		printf("b = %d\n", stack_b->data);
-		stack_b = stack_b->next;
+		printf("b = %d\n", stack_a->data);
+		stack_a = stack_a->next;
 	}
+}
+
+void	ft_push(char **param)
+{
+	int len;
+	int	mediana;
+	t_stack *stack_a;
+	t_stack *stack_b;
+
+	len = ft_count_param(param);
+	stack_a = ft_make_stack(param, len);
+	stack_b = NULL;
+	mediana = ft_mediana(stack_a, ft_st_len(stack_a));
+	ft_sort(stack_a, stack_b, mediana, len);
 }
 
 int main(int argc, char **argv)

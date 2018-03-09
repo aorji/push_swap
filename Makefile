@@ -12,7 +12,8 @@
 
 NAME	=	push_swap
 SRC		=	swap/main.c swap/ft_ss.c swap/ft_p.c swap/ft_len.c swap/ft_new_elem.c \
-			swap/ft_rr.c swap/ft_rrr.c
+			swap/ft_rr.c swap/ft_rrr.c swap/ft_swap_3.c swap/ft_mediana.c swap/sort_list.c \
+			swap/ft_sort.c
 FLG		=	-Wall -Wextra -Werror
 PRNTF	=	ft_printf/libftprintf.a
 
