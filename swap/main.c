@@ -14,6 +14,7 @@
 
 void ft_pr_a(t_stack *stack_a)
 {
+	ft_printf("%s\n", "stack_a =");
 	while (stack_a)
 	{
 		printf("a = %d\n", stack_a->data);
@@ -23,6 +24,7 @@ void ft_pr_a(t_stack *stack_a)
 
 void ft_pr_b(t_stack *stack_a)
 {
+	ft_printf("%s\n", "stack_b =");
 	while (stack_a)
 	{
 		printf("b = %d\n", stack_a->data);
@@ -41,7 +43,8 @@ void	ft_push(char **param)
 	stack_a = ft_make_stack(param, len);
 	stack_b = NULL;
 	mediana = ft_mediana(stack_a, ft_st_len(stack_a));
-	ft_sort(stack_a, stack_b, mediana, len);
+	//printf("%d\n", mediana);
+	ft_sort(stack_a, stack_b, mediana);
 }
 
 int main(int argc, char **argv)

@@ -35,10 +35,11 @@ static void	ft_er2(int n, int n1, char *str)
 	}
 }
 
-void	ft_error(char *str, t_stack *stack)
+static void	ft_error(char *str, t_stack *stack)
 {
 	long n;
 	long n1;
+	int len;
 
 	n = ft_atoi(str);
 	n1 = n;
@@ -46,7 +47,8 @@ void	ft_error(char *str, t_stack *stack)
 		ft_er1(n, n1, str);
 	if (n < 0)
 		ft_er2(n, n1, str);
-	while (stack)
+	len = ft_st_len(stack);
+	while (len - 1)
 	{
 		if (stack->data == n1)
 		{
@@ -54,6 +56,7 @@ void	ft_error(char *str, t_stack *stack)
 			exit(1);
 		}
 		stack = stack->next;
+		len--;
 	}
 }
 
@@ -63,6 +66,7 @@ t_stack	*ft_stack_new(void)
 
 	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
 		return (0);
+	new->block = 1;
 	new->next = NULL;
 	return (new);
 }
@@ -75,7 +79,7 @@ t_stack	*ft_make_stack(char **param, int len)
 
 	if (len == 0)
 		return (NULL);
-	i = 0;	
+	i = 0;
 	new = ft_stack_new();
 	head = new;
 	while (i < len)
@@ -83,8 +87,10 @@ t_stack	*ft_make_stack(char **param, int len)
 		ft_error(param[i], head);
 		new->data = ft_atoi(param[i]);
 		if (i + 1 < len)
+		{
 			new->next = ft_stack_new();
-		new = new->next;
+			new = new->next;
+		}
 		i++;
 	}
 	return (head);

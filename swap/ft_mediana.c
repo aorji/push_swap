@@ -15,14 +15,23 @@
 int	ft_mediana(t_stack *stack_a, int len)
 {
 	int i;
-	stack_a = sort_list(stack_a, len);
-	len /= 2;
-	while (len)
+	t_stack *new;
+	t_stack *med;
+
+	med = stack_a;
+	while(med)
 	{
-		stack_a = stack_a->next;
-		len--;
+		i = 0;
+		new = stack_a;
+		while (new)
+		{
+			if (new->data > med->data)
+				i++;
+			new = new->next;
+		}
+		if (i == len/2)
+			return (med->data);
+		med = med->next;
 	}
-	i = stack_a->data;
-	printf("med = %d\n", i);
-	return (i);
+	return (INT_MAX);
 }

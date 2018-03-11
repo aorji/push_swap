@@ -13,6 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 #include "../ft_printf/ft_printf.h"
+#include <limits.h>
 
 typedef	struct		s_stack
 {
@@ -38,11 +39,10 @@ void				ft_rr(t_stack **a, t_stack **b);
 void				ft_rra(t_stack **a);
 void				ft_rrb(t_stack **b);
 void				ft_rrr(t_stack **a, t_stack **b);
-void				ft_error(char *str, t_stack *stack);
-void				ft_sort_3(t_stack *a, int n);
+//void				ft_error(char *str, t_stack *stack);
+void				ft_sort_3(t_stack **a, int n);
 void				ft_pr_a(t_stack *stack_a);
 void				ft_pr_b(t_stack *stack_a);
 int					ft_mediana(t_stack *stack_a, int len);
-t_stack				*sort_list(t_stack *lst, int i);
-void				ft_sort(t_stack *stack_a, t_stack *stack_b, int mediana, int len);
+void				ft_sort(t_stack *stack_a, t_stack *stack_b, int mediana);
 #endif
