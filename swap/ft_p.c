@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ft_pa(t_stack **a, t_stack **b)
+void	ft_pa(t_stack **a, t_stack **b, int half)
 {
 	t_stack *head;
 
@@ -20,12 +20,13 @@ void	ft_pa(t_stack **a, t_stack **b)
 		return ;
 	head = ft_stack_new();
 	head->data = (*b)->data;
+	head->block = half;
 	head->next = (*a);
 	*b = (*b)->next;
 	*a = head;
 }
 
-void	ft_pb(t_stack **a, t_stack **b)
+void	ft_pb(t_stack **a, t_stack **b, int half)
 {
-	ft_pa(b, a);
+	ft_pa(b, a, half);
 }

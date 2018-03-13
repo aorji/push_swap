@@ -30,8 +30,8 @@ t_stack				*ft_stack_new(void);
 void				ft_sa(t_stack **a);
 void				ft_sb(t_stack **b);
 void				ft_ss(t_stack **a, t_stack **b);
-void				ft_pa(t_stack **a, t_stack **b);
-void				ft_pb(t_stack **a, t_stack **b);
+void				ft_pa(t_stack **a, t_stack **b, int half);
+void				ft_pb(t_stack **a, t_stack **b, int half);
 int 				ft_st_len(t_stack *st);
 void				ft_ra(t_stack **a);
 void				ft_rb(t_stack **b);
@@ -44,5 +44,5 @@ void				ft_sort_3(t_stack **a, int n);
 void				ft_pr_a(t_stack *stack_a);
 void				ft_pr_b(t_stack *stack_a);
 int					ft_mediana(t_stack *stack_a, int len);
-void				ft_sort(t_stack *stack_a, t_stack *stack_b, int mediana);
+int				ft_sort(t_stack **stack_a, t_stack **stack_b, int mediana, int half);
 #endif
