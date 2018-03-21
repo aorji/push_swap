@@ -24,7 +24,7 @@ static void zero_block(t_stack **stack_a)
 	}
 }
 
-static void	ft_type1(t_stack **stack_a)
+static void	ft_type1(t_stack **stack_a, int h)
 {
 	if ((*stack_a)->data < (*stack_a)->next->next->data && 
 		(*stack_a)->next->data < (*stack_a)->next->next->data)
@@ -35,34 +35,34 @@ static void	ft_type1(t_stack **stack_a)
 	else if ((*stack_a)->data > (*stack_a)->next->next->data && 
 		(*stack_a)->next->data < (*stack_a)->next->next->data)
 	{
-		ft_ra(stack_a);
+		ft_ra(stack_a, h);
 		// ft_printf("%s\n", "ra");
 	}
 	else if ((*stack_a)->data > (*stack_a)->next->next->data && 
 		(*stack_a)->next->data > (*stack_a)->next->next->data)
 	{
-		ft_ra(stack_a);
+		ft_ra(stack_a, h);
 		ft_sa(stack_a);
 		// ft_printf("%s\n%s\n", "ra", "sa");
 	}	
 }
 
-static	void	ft_type2(t_stack **stack_a)
+static	void	ft_type2(t_stack **stack_a, int h)
 {
 	if ((*stack_a)->data < (*stack_a)->next->next->data)
 	{
-		ft_rra(stack_a);
+		ft_rra(stack_a, h);
 		ft_sa(stack_a);
 		// ft_printf("%s\n%s\n", "rra", "sa");
 	}
 	else if ((*stack_a)->data > (*stack_a)->next->next->data)
 	{
-		ft_rra(stack_a);
+		ft_rra(stack_a, h);
 		// ft_printf("%s\n", "rra");
 	}
 }
 
-void	ft_sort_3(t_stack **stack_a, int n)
+int	ft_sort_3(t_stack **stack_a, int n)
 {
 	if (n == 2)
 	{
@@ -71,17 +71,22 @@ void	ft_sort_3(t_stack **stack_a, int n)
 			ft_sa(stack_a);
 			// ft_printf("%s\n", "sa");
 		}
-		return ;
+		zero_block(stack_a);
+		return (1);
 	}
 	else if (n == 1 || ((*stack_a)->data < (*stack_a)->next->data &&
 		(*stack_a)->next->data < (*stack_a)->next->next->data))
-		return ;
+	{
+		zero_block(stack_a);
+		return (1);
+	}
 	else if (n == 3)
 	{
 		if ((*stack_a)->data > (*stack_a)->next->data)
-			ft_type1(stack_a);
+			ft_type1(stack_a, n/2);
 		else if ((*stack_a)->data < (*stack_a)->next->data)
-			ft_type2(stack_a);
+			ft_type2(stack_a, n/2);
+		zero_block(stack_a);
 	}
-	zero_block(stack_a);
+	return (1);
 }

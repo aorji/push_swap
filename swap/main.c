@@ -46,6 +46,7 @@ void	ft_push(char **param)
 	stack_b = NULL;
 	mediana = ft_mediana(stack_a, ft_st_len(stack_a));
 	//printf("%d\n", mediana);
+	// printf("med = %d\n", mediana);
 	ft_sort(&stack_a, &stack_b, mediana, len/2);
 	ft_pr_a(stack_a);
 	ft_pr_b(stack_b);

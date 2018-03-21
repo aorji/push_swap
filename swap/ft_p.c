@@ -12,21 +12,23 @@
 
 #include "push_swap.h"
 
-void	ft_pa(t_stack **a, t_stack **b, int half)
+int	ft_pa(t_stack **a, t_stack **b, int half)
 {
 	t_stack *head;
 
 	if (ft_st_len(*b) < 1)
-		return ;
-	head = ft_stack_new();
+		return (1);
+	head = ft_stack_new(half);
 	head->data = (*b)->data;
 	head->block = half;
 	head->next = (*a);
 	*b = (*b)->next;
 	*a = head;
+	return (1);
 }
 
-void	ft_pb(t_stack **a, t_stack **b, int half)
+int	ft_pb(t_stack **a, t_stack **b, int half)
 {
 	ft_pa(b, a, half);
+	return (1);
 }

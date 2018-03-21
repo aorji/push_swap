@@ -60,13 +60,13 @@ static void	ft_error(char *str, t_stack *stack)
 	}
 }
 
-t_stack	*ft_stack_new(void)
+t_stack	*ft_stack_new(int h)
 {
 	t_stack	*new;
 
 	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
 		return (0);
-	new->block = 1;
+	new->block = h;
 	new->next = NULL;
 	return (new);
 }
@@ -80,15 +80,16 @@ t_stack	*ft_make_stack(char **param, int len)
 	if (len == 0)
 		return (NULL);
 	i = 0;
-	new = ft_stack_new();
+	new = ft_stack_new(len/2);
 	head = new;
 	while (i < len)
 	{
 		ft_error(param[i], head);
 		new->data = ft_atoi(param[i]);
+		new->block = len/2;
 		if (i + 1 < len)
 		{
-			new->next = ft_stack_new();
+			new->next = ft_stack_new(len/2);
 			new = new->next;
 		}
 		i++;
