@@ -35,3 +35,29 @@ int	ft_mediana(t_stack *stack_a, int len)
 	}
 	return (INT_MAX);
 }
+
+int	ft_mediana_b(t_stack *stack_a, int len)
+{
+	int i;
+	int j = len;
+	t_stack *new;
+	t_stack *med;
+
+	med = stack_a;
+	while(med)
+	{
+		i = 0;
+		new = stack_a;
+		while (j)
+		{
+			if (new->data > med->data)
+				i++;
+			new = new->next;
+			j--;
+		}
+		if (i == len/2)
+			return (med->data);
+		med = med->next;
+	}
+	return (INT_MAX);
+}

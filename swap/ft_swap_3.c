@@ -64,6 +64,7 @@ static	void	ft_type2(t_stack **stack_a, int h)
 
 int	ft_sort_3(t_stack **stack_a, int n)
 {
+	printf("--------------------->%s\n", "sort 3");
 	if (n == 2)
 	{
 		if ((*stack_a)->data > (*stack_a)->next->data)
