@@ -64,10 +64,8 @@ static char	**ft_run(char **new, int g, char const *s, char c)
 char		**ft_strsplit(char const *s, char c)
 {
 	char	**new;
-	int		j;
 	int		g;
 
-	j = 0;
 	if (!s)
 		return (0);
 	g = ft_count_words(s, c);

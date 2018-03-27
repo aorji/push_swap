@@ -17,12 +17,7 @@ void ft_pr_a(t_stack *stack_a)
 	ft_printf("%s\n", "stack_a =");
 	while (stack_a)
 	{
-		// ft_putstr("a = ");
-		// ft_putnbr(stack_a->data);
-		// ft_putstr("	bl = ");
-		// ft_putnbr(stack_a->block);
-		// ft_putstr("\n");
-		printf("a = %d		bl = %d\n", stack_a->data, stack_a->block);
+		ft_printf("a = %d		bl = %d\n", stack_a->data, stack_a->block);
 		stack_a = stack_a->next;
 	}
 	printf("\n");
@@ -33,15 +28,10 @@ void ft_pr_b(t_stack *stack_a)
 	ft_printf("%s\n", "stack_b =");
 	while (stack_a)
 	{
-		// ft_putstr("b = ");
-		// ft_putnbr(stack_a->data);
-		// ft_putstr("	bl = ");
-		// ft_putnbr(stack_a->block);
-		// ft_putstr("\n");
-		printf("b = %d		bl = %d\n", stack_a->data, stack_a->block);
+		ft_printf("b = %d		bl = %d\n", stack_a->data, stack_a->block);
 		stack_a = stack_a->next;
 	}
-	printf("\n");
+	ft_printf("\n");
 }
 
 void	ft_push(char **param)

@@ -15,12 +15,12 @@
 int ft_st_len(t_stack *st)
 {
 	int i;
-
+	
 	i = 0;
 	while (st)
 	{
 		i++;
-		st =st->next;
+		st = st->next;
 	}
 	return (i);
 }

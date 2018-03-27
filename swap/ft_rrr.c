@@ -16,7 +16,7 @@ int ft_rra(t_stack **a, int h)
 {
 	t_stack	*new;
 	t_stack	*run;
-	
+
 	if (ft_st_len(*a) < 2)
 		return (1);
 	new = ft_stack_new(h);

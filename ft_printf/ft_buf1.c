@@ -101,7 +101,7 @@ int			ft_positon(int *a, int *j, const char **format)
 	*a = ft_pos_kod(*format);
 	if (*a >= 0 && *j > *a)
 		*j = *a;
-	if (j < 0)
+	if (*j < 0)
 		return (g_i);
 	else
 		return (-1);

@@ -33,31 +33,30 @@ int	ft_mediana(t_stack *stack_a, int len)
 			return (med->data);
 		med = med->next;
 	}
-	return (INT_MAX);
+	return (ft_printf("ERROR: your mediana is a BULL SHIT"));
 }
-
 int	ft_mediana_b(t_stack *stack_a, int len)
 {
 	int i;
-	int j = len;
 	t_stack *new;
 	t_stack *med;
 
 	med = stack_a;
-	while(med)
+	if (!med->block)
+		return(0);
+	while(med && med->block)
 	{
 		i = 0;
 		new = stack_a;
-		while (j)
+		while (new && new->block)
 		{
 			if (new->data > med->data)
 				i++;
 			new = new->next;
-			j--;
 		}
 		if (i == len/2)
 			return (med->data);
 		med = med->next;
 	}
-	return (INT_MAX);
+	return (ft_printf("ERROR: your mediana_b is a BULL SHIT"));
 }
