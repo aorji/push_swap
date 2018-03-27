@@ -133,6 +133,30 @@ static void change_bl(t_stack **stack_a, int i)
 	}
 }
 
+static int char_f(t_stack *stack_a, t_stack *stack_b, bl_len)
+{
+	t_stack *tmp;
+
+	tmp = stack_b;
+	while (bl_len)
+	{
+		tmp = stack_b;
+		while (tmp)
+		{
+			if (stack_a->data < tmp->data)
+				return (0);
+			tmp = tmp->next;
+		}
+		stack_a = stack_a->next;
+		bl_len--;
+	}
+	return (1);
+}
+// static int check(t_stack *stack_a, t_stack *stack_b)
+// {
+
+// }
+
 int	ft_sort(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int half)
 {
 	static int d = 0;
@@ -147,57 +171,42 @@ int	ft_sort(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int half)
 	printf("---> %s\n", "a");
 	printf("med = %d\n", mediana);
 	ft_pr_a(*stack_a);
-	ft_pr_b(*stack_b);;
+	ft_pr_b(*stack_b);
 	if (!(*stack_a)->block && !ft_st_len(*stack_b))
 		return (1);
 	else if (!(*stack_a)->block && last(*stack_a))
-	{printf("--->1");
+	{
 		last_rr(1, stack_a, stack_b);
 		m1 = ft_mediana_b(*stack_a, block_len(*stack_a, (*stack_a)->block));
 		ft_sort(1, stack_a, stack_b, m1, half);
 	}
 	else if ((*stack_a)->block == -1 && t_block_len(*stack_a) > 3)
-	{printf("--->2");
+	{
 		change_bl(stack_a, t_block_len(*stack_a));
 		ft_sort(1, stack_a, stack_b, mediana, half);
 	}
 	else if (!(*stack_a)->block && !t_block_len(*stack_a))
-	{printf("--->3");
+	{
 		m = ft_mediana(*stack_b, block_len(*stack_b, (*stack_b)->block));
 		ft_sort_b(1, stack_a, stack_b, m, (*stack_b)->block/2);
 		m1 = ft_mediana_b(*stack_a, block_len(*stack_a, (*stack_a)->block));
 		ft_sort(1, stack_a, stack_b, m1, (*stack_a)->block);
 	}
-	else if ((bl_len = t_block_len(*stack_a)) <= 3 && (!last(*stack_a) || !d))
-	{printf("--->4");
+	else if ((bl_len = t_block_len(*stack_a)) <= 3 && (!last(*stack_a) || !d) && char_f(*stack_a, *stack_b, bl_len))
+	{
 		d = 1;
 		ft_sort(ft_sort_3(stack_a, bl_len), stack_a, stack_b, mediana, half);
 	}
 	else if ((*stack_a)->data > mediana && (*stack_a)->block)
-	{
-		printf("--->5");
 		return (ft_sort(ft_ra(stack_a, half), stack_a, stack_b, mediana, half));
-	}
 	else if ((*stack_a)->data < mediana && (*stack_a)->block)
-	{
-		printf("--->6");
 		return (ft_sort(ft_pb(stack_a, stack_b, half), stack_a, stack_b, mediana, half));
-	}
 	else if ((*stack_a)->data == mediana && !(smaller_that_m(*stack_a, mediana)) && (*stack_a)->block)
-	{
-		printf("--->7");
-		return (ft_sort(ft_pb(stack_a, stack_b, half), stack_a, stack_b, ft_mediana(*stack_a, ft_st_len(*stack_a)), ft_st_len(*stack_a)/2));
-	}
+		return (ft_sort(ft_pb(stack_a, stack_b, half), stack_a, stack_b, ft_mediana_b(*stack_a, block_len(*stack_a, (*stack_a)->block)), ft_st_len(*stack_a)/2));
 	else if ((*stack_a)->data == mediana && smaller_that_m(*stack_a, mediana) && (*stack_a)->block)
-	{
-		printf("--->8");
 		return (ft_sort(ft_ra(stack_a, half), stack_a, stack_b, mediana, half));
-	}
 	else if (t_block_len(*stack_a) <= 3 && (k = last(*stack_a)))
-	{
-		printf("--->9");
 		ft_sort(ft_rra(stack_a, k), stack_a, stack_b, mediana, half);
-	}
 	return (1);
 }
 
@@ -205,5 +214,10 @@ int	ft_sort(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int half)
 // make re && ./push_swap 3 2 1 4 -9 0 77 -23 44 5 33 45 -12 34 100 -100 71 17 -99 -101 || 20
 // make re && ./push_swap 3 2 1 4 -9 0 77 -23 44 5 33 45 -12 34 100 -100 71 17 -99 12 10 || 21
 // make re && ./push_swap 3 2 1 4 -9 0 77 -23 44 5 33 45 -12 34 100 -100 71 17 -99 12 10 81 11 -51 199 912 || 26
+// make re && ./push_swap -1 3 2 1 4 -9 0 -16 77 -23 44 5 33 45 -12 34 115 -100 16 785983 -71 17 -99 12 10 81 11 -51 199 912 10239 
+// len = 31
+// make re && ./push_swap 2147483645 -2147483645 -1 3 2 1 4 -9 0 -16 77 -23 44 5 33 -11 513 45 -12 34 2147483646 -2147483646 115 -100 16 785983 -71 17 -99 12 10 81 11 -51 199 912 10239 -88 2147483647 -2147483647 
+//len = 40
 
-// check!!! 3 2 1 4 -9 0 77 -23 44 5 33 45 -12 34 115 -100 -71 17 -99 12 10 81 11 -51 199 912
+
+// check!!! 

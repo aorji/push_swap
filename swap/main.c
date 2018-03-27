@@ -42,6 +42,7 @@ void	ft_push(char **param)
 	t_stack *stack_b;
 
 	len = ft_count_param(param);
+	printf("len = %d\n", len);
 	stack_a = ft_make_stack(param, len);
 	stack_b = NULL;
 	mediana = ft_mediana(stack_a, ft_st_len(stack_a));
