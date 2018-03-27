@@ -55,6 +55,7 @@ static int block_len(t_stack *st, int h)
 	}
 	return (i);
 }
+
 static int t_block_len(t_stack *st)
 {
 	int i;
@@ -70,6 +71,7 @@ static int t_block_len(t_stack *st)
 	}
 	return (i);
 }
+
 static int count_rr(t_stack *b, int l)
 {
 	while (b)
@@ -91,11 +93,11 @@ static int last(t_stack *stack_a)
 static int	ft_sort_b(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int bl)
 {
 	int i;
-	printf("---> %s\n", "b");
-	printf("med = %d\n", mediana);
-	printf("bl = %d\n", bl);
-	ft_pr_a(*stack_a);
-	ft_pr_b(*stack_b);
+	// printf("---> %s\n", "b");
+	// printf("med = %d\n", mediana);
+	// printf("bl = %d\n", bl);
+	// ft_pr_a(*stack_a);
+	// ft_pr_b(*stack_b);
 	if ((*stack_b)->data > mediana)
 		ft_sort_b(ft_pa(stack_a, stack_b, bl), stack_a, stack_b, mediana, bl);
 	else if ((*stack_b)->data < mediana)
@@ -133,7 +135,7 @@ static void change_bl(t_stack **stack_a, int i)
 	}
 }
 
-static int char_f(t_stack *stack_a, t_stack *stack_b, bl_len)
+static int char_f(t_stack *stack_a, t_stack *stack_b, int bl_len)
 {
 	t_stack *tmp;
 
@@ -168,10 +170,10 @@ int	ft_sort(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int half)
 	int i = 0;
 	a = 0;
 
-	printf("---> %s\n", "a");
-	printf("med = %d\n", mediana);
-	ft_pr_a(*stack_a);
-	ft_pr_b(*stack_b);
+	// printf("---> %s\n", "a");
+	// printf("med = %d\n", mediana);
+	// ft_pr_a(*stack_a);
+	// ft_pr_b(*stack_b);
 	if (!(*stack_a)->block && !ft_st_len(*stack_b))
 		return (1);
 	else if (!(*stack_a)->block && last(*stack_a))
@@ -218,6 +220,7 @@ int	ft_sort(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int half)
 // len = 31
 // make re && ./push_swap 2147483645 -2147483645 -1 3 2 1 4 -9 0 -16 77 -23 44 5 33 -11 513 45 -12 34 2147483646 -2147483646 115 -100 16 785983 -71 17 -99 12 10 81 11 -51 199 912 10239 -88 2147483647 -2147483647 
 //len = 40
-
-
-// check!!! 
+// make re && ./push_swap 2147483645 -65302 -2147483645 -1 3 2 1 4 -9 0 -16 77 -23 44 5 33 -11 513 45 -12 34 2147483646 -2147483646 115 -100 16 785983 -71 17 -99 12 10 81 11 -51 199 912 10239 -88 2147483647 -2147483647 448 449 440 -5401 1010101010 -341423 217 77777 -10 67 300 5758 74432 9856 -535 -6534 -1113 5611 -43234 -598411 87589 11111 -22212 3245 -13123 -42455 -997 -898765 459821 -9128 -444444444 71234 34631 653466 -35953
+// len = 76
+// make re && ./push_swap 2147483645 -65302 -2147483645 -1 3 2 1 4 -9 0 -16 77 -23 44 5 33 -11 513 45 -12 34 2147483646 -2147483646 115 -100 16 785983 -71 17 -99 12 10 81 11 -51 199 912 10239 -88 2147483647 -2147483647 448 449 440 -5401 1010101010 -341423 217 77777 -10 67 300 5758 74432 9856 -535 -6534 -1113 5611 -43234 -598411 87589 11111 -22212 3245 -13123 -42455 -997 -898765 459821 -9128 -444444444 71234 34631 653466 -35953 1091 91621 999999 9204885 7872728 -65433559 -13 -14 -15 -102 -120 -130 -200 400 10382 7728182 -483727 -2834 94748 -938473 -1111119 -372983 -98 -95
+// len = 100 

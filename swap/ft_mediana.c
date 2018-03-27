@@ -12,6 +12,24 @@
 
 #include "push_swap.h"
 
+static int block_len(t_stack *st, int h)
+{
+	int i;
+	i = 0;
+	t_stack *s;
+
+	s = st;
+	while (s)
+	{
+		if (s->block == h)
+			i++;
+		else
+			return (i);
+		s = s->next;
+	}
+	return (i);
+}
+
 int	ft_mediana(t_stack *stack_a, int len)
 {
 	int i;
@@ -44,6 +62,8 @@ int	ft_mediana_b(t_stack *stack_a, int len)
 	med = stack_a;
 	if (!med->block)
 		return(0);
+	if (block_len(stack_a, stack_a->block) == 1)
+		return (stack_a->data);
 	while(med && med->block)
 	{
 		i = 0;
@@ -58,5 +78,6 @@ int	ft_mediana_b(t_stack *stack_a, int len)
 			return (med->data);
 		med = med->next;
 	}
+	ft_pr_a(stack_a);
 	return (ft_printf("ERROR: your mediana_b is a BULL SHIT"));
 }

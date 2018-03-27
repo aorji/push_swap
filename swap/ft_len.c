@@ -37,3 +37,35 @@ int		ft_count_param(char **param)
 	}
 	return (i);
 }
+
+// int block_len(t_stack *st, int h)
+// {
+// 	int i;
+// 	i = 0;
+// 	t_stack *s;
+
+// 	s = st;
+// 	while (s)
+// 	{
+// 		if (s->block == h)
+// 			i++;
+// 		s = s->next;
+// 	}
+// 	return (i);
+// }
+
+// int t_block_len(t_stack *st)
+// {
+// 	int i;
+// 	i = 0;
+// 	t_stack *s;
+
+// 	s = st;
+// 	while (s)
+// 	{
+// 		if (s->block)
+// 			i++;
+// 		s = s->next;
+// 	}
+// 	return (i);
+// }
