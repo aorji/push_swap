@@ -16,6 +16,8 @@
 #include <limits.h>
 #include <stdio.h>
 
+int g_count_moves; //need to be deleted bevore evaluation
+
 typedef	struct		s_stack
 {
 	int				data;

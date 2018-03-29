@@ -20,7 +20,8 @@ void	ft_sa(t_stack **a)
 		return;
 	c = (*a)->data;
 	(*a)->data = (*a)->next->data;
-	(*a)->next->data = c; 
+	(*a)->next->data = c;
+	g_count_moves++;
 }
 
 void	ft_sb(t_stack **b)

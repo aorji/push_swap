@@ -12,6 +12,22 @@
 
 #include "push_swap.h"
 
+static int check(t_stack *stack_a)
+{
+	int a;
+
+	if (stack_a)
+		a = stack_a->data;
+	while (stack_a && stack_a->next)
+	{
+		if (stack_a->next->data < a)
+			return (0);
+		a = stack_a->next->data;
+		stack_a = stack_a->next;
+	}
+	return (1);
+}
+
 void ft_pr_a(t_stack *stack_a)
 {
 	ft_printf("%s\n", "stack_a =");
@@ -44,6 +60,8 @@ void	ft_push(char **param)
 	len = ft_count_param(param);
 	printf("len = %d\n", len);
 	stack_a = ft_make_stack(param, len);
+	if (check(stack_a))
+		return ;
 	stack_b = NULL;
 	mediana = ft_mediana(stack_a, ft_st_len(stack_a));
 	ft_sort(1, &stack_a, &stack_b, mediana, len/2);
@@ -55,6 +73,7 @@ int main(int argc, char **argv)
 {
 	char **param;
 
+	g_count_moves = 0;
 	if (argc < 2)
 		return (0);
 	if (argc == 2)
@@ -62,5 +81,6 @@ int main(int argc, char **argv)
 	if (argc > 2)
 		param = ++argv;
 	ft_push(param);
+	printf("g_count_moves = %d\n", g_count_moves);
 	return 0;
 }

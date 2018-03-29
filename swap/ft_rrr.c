@@ -27,6 +27,7 @@ int ft_rra(t_stack **a, int h)
 	new->data = run->next->data;
 	run->next = NULL;
 	(*a) = new;
+	g_count_moves++;
 	return (1);
 }
 

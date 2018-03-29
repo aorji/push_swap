@@ -23,7 +23,7 @@ static void	ft_er1(int n, int n1, char *str)
 	}
 }
 
-static void	ft_er2(int n, int n1, char *str)
+static void	ft_er2(long n, long n1, char *str)
 {
 	n = -n;
 	while (n > 9)
