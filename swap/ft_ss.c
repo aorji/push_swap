@@ -22,6 +22,7 @@ void	ft_sa(t_stack **a)
 	(*a)->data = (*a)->next->data;
 	(*a)->next->data = c;
 	g_count_moves++;
+	// printf("%s\n", "sa");
 }
 
 void	ft_sb(t_stack **b)

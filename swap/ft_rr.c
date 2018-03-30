@@ -27,6 +27,7 @@ int ft_ra(t_stack **a, int h)
 	head->next = ft_stack_new(h);
 	head->next->data = s;
 	g_count_moves++;
+	// printf("%s\n", "ra");
 	return(1);
 }
 

@@ -58,7 +58,6 @@ void	ft_push(char **param)
 	t_stack *stack_b;
 
 	len = ft_count_param(param);
-	printf("len = %d\n", len);
 	stack_a = ft_make_stack(param, len);
 	if (check(stack_a))
 		return ;
@@ -67,6 +66,8 @@ void	ft_push(char **param)
 	ft_sort(1, &stack_a, &stack_b, mediana, len/2);
 	ft_pr_a(stack_a);
 	ft_pr_b(stack_b);
+	printf("g_count_moves = %d\n", g_count_moves);
+	// printf("len = %d\n", len);
 }
 
 int main(int argc, char **argv)
@@ -81,6 +82,5 @@ int main(int argc, char **argv)
 	if (argc > 2)
 		param = ++argv;
 	ft_push(param);
-	printf("g_count_moves = %d\n", g_count_moves);
 	return 0;
 }

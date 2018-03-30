@@ -25,6 +25,20 @@ int ft_st_len(t_stack *st)
 	return (i);
 }
 
+int ft_st_len_true(t_stack *st)
+{
+	int i;
+	
+	i = 0;
+	while (st)
+	{
+		if (st->data)
+			i++;
+		st = st->next;
+	}
+	return (i);
+}
+
 int		ft_count_param(char **param)
 {
 	int i;

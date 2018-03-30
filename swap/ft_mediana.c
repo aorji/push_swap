@@ -60,8 +60,9 @@ int	ft_mediana_b(t_stack *stack_a, int len)
 {
 	int i;
 	t_stack *new;
-	t_stack *med;
+	t_stack *med;	
 
+  	// printf("len = %d\n", len);
 	med = stack_a;
 	if (!med->block)
 		return(0);
