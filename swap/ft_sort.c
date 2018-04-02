@@ -150,53 +150,53 @@ static int last(t_stack *stack_a)
 	return (stack_a->block);
 }
 
-static int last_rr(int i, t_stack **stack_a, t_stack **stack_b)
-{
-	if (((*stack_a)->block == 0 || (*stack_a)->block == -1) && last(*stack_a) > 0)
-		last_rr(ft_rra(stack_a, -1), stack_a, stack_b);
-	return (1);
-}
+// static int last_rr(int i, t_stack **stack_a, t_stack **stack_b)
+// {
+// 	if (((*stack_a)->block == 0 || (*stack_a)->block == -1) && last(*stack_a) > 0)
+// 		last_rr(ft_rra(stack_a, -1), stack_a, stack_b);
+// 	return (1);
+// }
 
-static void change_bl(t_stack **stack_a, int i)
-{
-	t_stack *tmp;
+// static void change_bl(t_stack **stack_a, int i)
+// {
+// 	t_stack *tmp;
 
-	tmp = *stack_a;
-	while (tmp && tmp->block == -1)
-	{
-		tmp->block = i;
-		tmp = tmp->next;
-	}
-}
+// 	tmp = *stack_a;
+// 	while (tmp && tmp->block == -1)
+// 	{
+// 		tmp->block = i;
+// 		tmp = tmp->next;
+// 	}
+// }
 
-static int char_f(t_stack *stack_a, t_stack *stack_b, int bl_len)
-{
-	t_stack *tmp;
+// static int char_f(t_stack *stack_a, t_stack *stack_b, int bl_len)
+// {
+// 	t_stack *tmp;
 
-	tmp = stack_b;
-	while (bl_len)
-	{
-		tmp = stack_b;
-		while (tmp)
-		{
-			if (stack_a->data < tmp->data)
-				return (0);
-			tmp = tmp->next;
-		}
-		stack_a = stack_a->next;
-		bl_len--;
-	}
-	return (1);
-}
+// 	tmp = stack_b;
+// 	while (bl_len)
+// 	{
+// 		tmp = stack_b;
+// 		while (tmp)
+// 		{
+// 			if (stack_a->data < tmp->data)
+// 				return (0);
+// 			tmp = tmp->next;
+// 		}
+// 		stack_a = stack_a->next;
+// 		bl_len--;
+// 	}
+// 	return (1);
+// }
 
 static int	ft_sort_b(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int bl)
 {
-	int i;
 	// printf("---> %s\n", "b");
 	// printf("med = %d\n", mediana);
 	// printf("bl = %d\n", bl);
 	// ft_pr_a(*stack_a);
 	// ft_pr_b(*stack_b);
+	a /=2;
 	if (!bg_eq_m(*stack_b, mediana))
 		return (1);
 	if ((*stack_b)->data > mediana)
@@ -233,14 +233,9 @@ static int	ft_sort_b(int a, t_stack **stack_a, t_stack **stack_b, int mediana, i
 
 int	ft_sort(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int half)
 {
-	static int d = 0;
 	int m;
 	int m1;
-	int bl;
-	int k;
 	int bl_len;
-	int i = 0;
-	a = 0;
 
 	// printf("---> %s\n", "a");
 	// printf("med = %d\n", mediana);
@@ -250,6 +245,7 @@ int	ft_sort(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int half)
 	// ft_pr_a(*stack_a);
 	// ft_pr_b(*stack_b);
 	// printf("g_count_moves = %d\n", g_count_moves);
+	a /=2;
 	if (!(*stack_a)->block && !ft_st_len(*stack_b))
 		return (1);
 	else if (!t_block_len(*stack_a))
@@ -303,3 +299,6 @@ int	ft_sort(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int half)
 // make re && ./push_swap 2147483645 -65302 -2147483645 -1 3 2 1 4 -9 0 -16 77 -23 44 5 33 -11 513 45 -12 34 2147483646 -2147483646 115 -100 16 785983 -71 17 -99 12 10 81 11 -51 199 912 10239 -88 2147483647 -2147483647 448 449 440 -5401 1010101010 -341423 217 77777 -10 67 300 5758 74432 9856 -535 -6534 -1113 5611 -43234 -598411 87589 11111 -22212 3245 -13123 -42455 -997 -898765 459821 -9128 -444444444 71234 34631 653466 -35953
 // make re && ./push_swap 2147483645 -65302 -2147483645 -1 3 2 1 4 -9 0 -16 77 -23 44 5 33 -11 513 45 -12 34 2147483646 -2147483646 115 -100 16 785983 -71 17 -99 12 10 81 11 -51 199 912 10239 -88 2147483647 -2147483647 448 449 440 -5401 1010101010 -341423 217 77777 -10 67 300 5758 74432 9856 -535 -6534 -1113 5611 -43234 -598411 87589 11111 -22212 3245 -13123 -42455 -997 -898765 459821 -9128 -444444444 71234 34631 653466 -35953 1091 91621 999999 9204885 7872728 -65433559 -13 -14 -15 -102 -120 -130 -200 400 10382 7728182 -483727 -2834 94748 -938473 -1111119 -372983 -98 -95
 // make re && ./push_swap 2147483645 -65302 -2147483645 -1 3 2 1 4 -9 0 -16 77 -23 44 5 33 -11 513 45 -12 34 2147483646 -2147483646 115 -100 16 785983 -71 17 -99 12 10 81 11 -51 199 912 10239 -88 2147483647 -2147483647 448 449 440 -5401 1010101010 -341423 217 77777 -10 67 300 5758 74432 9856 -535 -6534 -1113 5611 -43234 -598411 87589 11111 -22212 3245 -13123 -42455 -997 -898765 459821 -9128 -444444444 71234 34631 653466 -35953 1091 91621 999999 9204885 7872728 -65433559 -13 -14 -15 -102 -120 -130 -200 400 10382 7728182 -483727 -2834 94748 -938473 -1111119 -372983 -98 -95 6
+
+
+// ARG="2147483645 -65302 -2147483645 -1 3 2 1 4 -9 0 -16 77 -23 44 5 33 -11 513 45 -12 34 2147483646 -2147483646 115 -100 16 785983 -71 17 -99 12 10 81 11 -51 199 912 10239 -88 2147483647 -2147483647 448 449 440 -5401 1010101010 -341423 217 77777 -10 67 300 5758 74432 9856 -535 -6534 -1113 5611 -43234 -598411 87589 11111 -22212 3245 -13123 -42455 -997 -898765 459821 -9128 -444444444 71234 34631 653466 -35953 1091 91621 999999 9204885 7872728 -65433559 -13 -14 -15 -102 -120 -130 -200 400 10382 7728182 -483727 -2834 94748 -938473 -1111119 -372983 -98 -95"; ./push_swap $ARG | ./checker $ARG

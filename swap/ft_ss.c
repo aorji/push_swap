@@ -22,12 +22,20 @@ void	ft_sa(t_stack **a)
 	(*a)->data = (*a)->next->data;
 	(*a)->next->data = c;
 	g_count_moves++;
-	// printf("%s\n", "sa");
+	ft_printf("%s\n", "sa");
 }
 
-void	ft_sb(t_stack **b)
+void	ft_sb(t_stack **a)
 {
-	ft_sa(b);
+	int c;
+
+	if (ft_st_len(*a) < 2)
+		return;
+	c = (*a)->data;
+	(*a)->data = (*a)->next->data;
+	(*a)->next->data = c;
+	g_count_moves++;
+	ft_printf("%s\n", "sa");
 }
 
 void	ft_ss(t_stack **a, t_stack **b)

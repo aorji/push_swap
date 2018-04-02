@@ -25,12 +25,23 @@ int	ft_pa(t_stack **a, t_stack **b, int half)
 	*b = (*b)->next;
 	*a = head;
 	g_count_moves++;
-	// printf("%s\n", "p");
+	ft_printf("pa\n");
 	return (1);
 }
 
 int	ft_pb(t_stack **a, t_stack **b, int half)
 {
-	ft_pa(b, a, half);
+	t_stack *head;
+
+	if (ft_st_len(*a) < 1)
+		return (1);
+	head = ft_stack_new(half);
+	head->data = (*a)->data;
+	head->block = half;
+	head->next = (*b);
+	*a = (*a)->next;
+	*b = head;
+	g_count_moves++;
+	ft_printf("pb\n");
 	return (1);
 }

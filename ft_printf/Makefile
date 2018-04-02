@@ -19,15 +19,15 @@ FLG = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ cd ./libft && make
-	@ ar rc $(NAME) $(OBJ) ./libft/*.o
+	@ cd ../libft && make
+	@ ar rc $(NAME) $(OBJ) ../libft/*.o
 	
 %.o: %.c
 	@ gcc $(FLG) -c -o $@ $<
 
 clean:
 	@ /bin/rm -rf $(OBJ)
-	@ cd ./libft && make clean
+	@ cd ../libft && make clean
 
 fclean: clean
 	@ /bin/rm -f $(NAME)

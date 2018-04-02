@@ -28,13 +28,27 @@ int ft_rra(t_stack **a, int h)
 	run->next = NULL;
 	(*a) = new;
 	g_count_moves++;
-	// printf("%s\n", "rra");
+	ft_printf("%s\n", "rra");
 	return (1);
 }
 
-int ft_rrb(t_stack **b, int h)
+int ft_rrb(t_stack **a, int h)
 {
-	ft_rra(b, h);
+	t_stack	*new;
+	t_stack	*run;
+
+	if (ft_st_len(*a) < 2)
+		return (1);
+	new = ft_stack_new(h);
+	new->next = (*a);
+	run = new->next;
+	while (run->next->next)
+		run = run->next;
+	new->data = run->next->data;
+	run->next = NULL;
+	(*a) = new;
+	g_count_moves++;
+	ft_printf("%s\n", "rrb");
 	return (1);
 }
 

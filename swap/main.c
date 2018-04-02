@@ -36,7 +36,7 @@ void ft_pr_a(t_stack *stack_a)
 		ft_printf("a = %d		bl = %d\n", stack_a->data, stack_a->block);
 		stack_a = stack_a->next;
 	}
-	printf("\n");
+	ft_printf("\n");
 }
 
 void ft_pr_b(t_stack *stack_a)
@@ -64,9 +64,9 @@ void	ft_push(char **param)
 	stack_b = NULL;
 	mediana = ft_mediana(stack_a, ft_st_len(stack_a));
 	ft_sort(1, &stack_a, &stack_b, mediana, len/2);
-	ft_pr_a(stack_a);
-	ft_pr_b(stack_b);
-	printf("g_count_moves = %d\n", g_count_moves);
+	// ft_pr_a(stack_a);
+	// ft_pr_b(stack_b);
+	//printf("g_count_moves = %d\n", g_count_moves);
 	// printf("len = %d\n", len);
 }
 

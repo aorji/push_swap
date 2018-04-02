@@ -15,7 +15,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include "./libft/libft.h"
+# include "../libft/libft.h"
 # include <inttypes.h>
 # include <wchar.h>
 # define CYAN "\x1b[0;36m"
