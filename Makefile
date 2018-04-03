@@ -17,10 +17,10 @@ H 		=	swap/push_swap.h
 	
 SRC		=	swap/ft_ss.c swap/ft_p.c swap/ft_len.c swap/ft_new_elem.c \
 			swap/ft_rr.c swap/ft_rrr.c swap/ft_swap_3.c swap/ft_mediana.c \
-			swap/ft_sort.c
+			swap/ft_sort.c swap/print.c
 
 P_SRC	=	swap/main.c
-C_SRC	=	checker.c
+C_SRC	=	swap/checker.c
 
 P_OBJ	=	$(P_SRC:.c=.o) $(SRC:.c=.o)
 C_OBJ	=	$(C_SRC:.c=.o) $(SRC:.c=.o)
@@ -28,19 +28,12 @@ C_OBJ	=	$(C_SRC:.c=.o) $(SRC:.c=.o)
 PRNTF	=	ft_printf/libftprintf.a
 
 all: $(P_NAME) $(C_NAME) 
-	
-	@ P_OBJ: $(P_SRC) $(SRC) $(H)
-	@ gcc $(FLG) $(P_SRC) $(SRC) $(H) -c 
-
-	@ C_OBJ: $(C_SRC) $(SRC) $(H)
-	@ gcc $(FLG) $(C_SRC) $(SRC) $(H) -c 
 
 $(P_NAME): $(P_OBJ) $(H)
 	@ make -C ft_printf
 	@ gcc $(FLG) -o $(P_NAME) $(P_OBJ) -I.$(H) $(PRNTF)
 
 $(C_NAME): $(C_OBJ) $(H)
-	@ make -C ft_printf
 	@ gcc $(FLG) -o $(C_NAME) $(C_OBJ) -I.$(H) $(PRNTF)
 
 clean:

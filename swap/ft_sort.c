@@ -40,7 +40,7 @@ static int sm_eq_m(t_stack *st, int med) // ест что-то меньше, ч�
 	return (0);
 }
 
-static int eq(t_stack *st, int med) // ест что-то меньше, чем медиана -> 1;
+static int eq(t_stack *st, int med) // eq to mediana -> 1;
 {
 	t_stack *s;
 
@@ -193,7 +193,7 @@ static int	ft_sort_b(int a, t_stack **stack_a, t_stack **stack_b, int mediana, i
 {
 	// printf("---> %s\n", "b");
 	// printf("med = %d\n", mediana);
-	// printf("bl = %d\n", bl);
+	// // printf("bl = %d\n", bl);
 	// ft_pr_a(*stack_a);
 	// ft_pr_b(*stack_b);
 	a /=2;
@@ -244,7 +244,6 @@ int	ft_sort(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int half)
 	// printf("in b %d elem\n", t_block_len(*stack_b));
 	// ft_pr_a(*stack_a);
 	// ft_pr_b(*stack_b);
-	// printf("g_count_moves = %d\n", g_count_moves);
 	a /=2;
 	if (!(*stack_a)->block && !ft_st_len(*stack_b))
 		return (1);
@@ -255,7 +254,6 @@ int	ft_sort(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int half)
 		m1 = ft_mediana_b(*stack_a, block_len(*stack_a, (*stack_a)->block));
 		ft_sort(1, stack_a, stack_b, m1, (*stack_a)->block);
 	}
-
 	else if ((bl_len = t_block_len(*stack_a)) <= 3 && ((smaller_that_m(*stack_a, mediana) && eq(*stack_a, mediana)) || (!smaller_that_m(*stack_a, mediana))))
 	{
 		while (count_rr_zero(*stack_a, last(*stack_a)))

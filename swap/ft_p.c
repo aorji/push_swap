@@ -24,7 +24,6 @@ int	ft_pa(t_stack **a, t_stack **b, int half)
 	head->next = (*a);
 	*b = (*b)->next;
 	*a = head;
-	g_count_moves++;
 	ft_printf("pa\n");
 	return (1);
 }
@@ -41,7 +40,6 @@ int	ft_pb(t_stack **a, t_stack **b, int half)
 	head->next = (*b);
 	*a = (*a)->next;
 	*b = head;
-	g_count_moves++;
 	ft_printf("pb\n");
 	return (1);
 }

@@ -21,7 +21,6 @@ void	ft_sa(t_stack **a)
 	c = (*a)->data;
 	(*a)->data = (*a)->next->data;
 	(*a)->next->data = c;
-	g_count_moves++;
 	ft_printf("%s\n", "sa");
 }
 
@@ -34,12 +33,26 @@ void	ft_sb(t_stack **a)
 	c = (*a)->data;
 	(*a)->data = (*a)->next->data;
 	(*a)->next->data = c;
-	g_count_moves++;
 	ft_printf("%s\n", "sa");
 }
 
 void	ft_ss(t_stack **a, t_stack **b)
 {
-	ft_sa(a);
-	ft_sb(b);
+	int c;
+
+	if (ft_st_len(*a) < 2 && ft_st_len(*b) < 2)
+		return;
+	if (ft_st_len(*a) >= 2)
+	{
+		c = (*a)->data;
+		(*a)->data = (*a)->next->data;
+		(*a)->next->data = c;
+	}
+	if (ft_st_len(*b) >= 2)
+	{
+		c = (*b)->data;
+		(*b)->data = (*b)->next->data;
+		(*b)->next->data = c;
+	}
+	ft_printf("%s\n", "ss");
 }

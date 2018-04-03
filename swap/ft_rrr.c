@@ -27,7 +27,6 @@ int ft_rra(t_stack **a, int h)
 	new->data = run->next->data;
 	run->next = NULL;
 	(*a) = new;
-	g_count_moves++;
 	ft_printf("%s\n", "rra");
 	return (1);
 }
@@ -47,7 +46,6 @@ int ft_rrb(t_stack **a, int h)
 	new->data = run->next->data;
 	run->next = NULL;
 	(*a) = new;
-	g_count_moves++;
 	ft_printf("%s\n", "rrb");
 	return (1);
 }
@@ -56,6 +54,32 @@ int ft_rrb(t_stack **a, int h)
 
 void	ft_rrr(t_stack **a, t_stack **b, int h)
 {
-	ft_rra(a, h);
-	ft_rrb(b, h);
+	t_stack	*new;
+	t_stack	*run;
+
+	if (ft_st_len(*a) < 2 && ft_st_len(*b) < 2)
+		return;
+	if (ft_st_len(*a) >= 2)
+	{
+		new = ft_stack_new(h);
+		new->next = (*a);
+		run = new->next;
+		while (run->next->next)
+			run = run->next;
+		new->data = run->next->data;
+		run->next = NULL;
+		(*a) = new;
+	}
+	if (ft_st_len(*b) >= 2)
+	{
+		new = ft_stack_new(h);
+		new->next = (*b);
+		run = new->next;
+		while (run->next->next)
+			run = run->next;
+		new->data = run->next->data;
+		run->next = NULL;
+		(*b) = new;
+	}
+	ft_printf("%s\n", "rrr");
 }
