@@ -47,5 +47,7 @@ void 				ft_pr(t_stack *a, t_stack *b);
 int					ft_mediana(t_stack *stack_a, int len);
 int					ft_sort(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int half);
 int					ft_mediana_b(t_stack *stack_a, int len);
-int ft_st_len_true(t_stack *st);
+int					zero_block(t_stack **stack_a);
+int					ft_st_len_true(t_stack *st);
+
 #endif

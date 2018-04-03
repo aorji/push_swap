@@ -150,45 +150,6 @@ static int last(t_stack *stack_a)
 	return (stack_a->block);
 }
 
-// static int last_rr(int i, t_stack **stack_a, t_stack **stack_b)
-// {
-// 	if (((*stack_a)->block == 0 || (*stack_a)->block == -1) && last(*stack_a) > 0)
-// 		last_rr(ft_rra(stack_a, -1), stack_a, stack_b);
-// 	return (1);
-// }
-
-// static void change_bl(t_stack **stack_a, int i)
-// {
-// 	t_stack *tmp;
-
-// 	tmp = *stack_a;
-// 	while (tmp && tmp->block == -1)
-// 	{
-// 		tmp->block = i;
-// 		tmp = tmp->next;
-// 	}
-// }
-
-// static int char_f(t_stack *stack_a, t_stack *stack_b, int bl_len)
-// {
-// 	t_stack *tmp;
-
-// 	tmp = stack_b;
-// 	while (bl_len)
-// 	{
-// 		tmp = stack_b;
-// 		while (tmp)
-// 		{
-// 			if (stack_a->data < tmp->data)
-// 				return (0);
-// 			tmp = tmp->next;
-// 		}
-// 		stack_a = stack_a->next;
-// 		bl_len--;
-// 	}
-// 	return (1);
-// }
-
 static int	ft_sort_b(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int bl)
 {
 	// printf("---> %s\n", "b");
@@ -203,13 +164,9 @@ static int	ft_sort_b(int a, t_stack **stack_a, t_stack **stack_b, int mediana, i
 	{
 		ft_pa(stack_a, stack_b, bl);
 		if (!bg_eq_m(*stack_b, mediana))
-		{
 			if (*stack_b)
-			{
 				while (count_rr(*stack_b, last(*stack_b)))
 					ft_rrb(stack_b, last(*stack_b));
-			}
-		}
 		ft_sort_b(1, stack_a, stack_b, mediana, bl);
 	}
 	else if ((*stack_b)->data < mediana)
@@ -223,10 +180,8 @@ static int	ft_sort_b(int a, t_stack **stack_a, t_stack **stack_b, int mediana, i
 	{
 		ft_pa(stack_a, stack_b, bl);
 		if (*stack_b)
-		{
 			while (count_rr(*stack_b, last(*stack_b)))
 				ft_rrb(stack_b, last(*stack_b));
-		}
 	}
 	return (1);
 }
@@ -239,9 +194,9 @@ int	ft_sort(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int half)
 
 	// printf("---> %s\n", "a");
 	// printf("med = %d\n", mediana);
-	// printf("block = %d\n", half);
-	// printf("in a %d elem\n", t_block_len(*stack_a));
-	// printf("in b %d elem\n", t_block_len(*stack_b));
+	// // printf("block = %d\n", half);
+	// // printf("in a %d elem\n", t_block_len(*stack_a));
+	// // printf("in b %d elem\n", t_block_len(*stack_b));
 	// ft_pr_a(*stack_a);
 	// ft_pr_b(*stack_b);
 	a /=2;
