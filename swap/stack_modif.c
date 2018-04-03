@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   stack_modif.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aorji <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/03 17:13:11 by aorji             #+#    #+#             */
-/*   Updated: 2018/04/03 17:13:15 by aorji            ###   ########.fr       */
+/*   Created: 2018/04/03 20:17:54 by aorji             #+#    #+#             */
+/*   Updated: 2018/04/03 20:18:12 by aorji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_pr_a(t_stack *stack_a)
+int	last(t_stack *stack_a)
 {
-	ft_printf("%s\n", "stack_a =");
-	while (stack_a)
-	{
-		ft_printf("a = %d		bl = %d\n", stack_a->data, stack_a->block);
+	while (stack_a->next)
 		stack_a = stack_a->next;
-	}
-	ft_printf("\n");
+	return (stack_a->block);
 }
 
-void ft_pr_b(t_stack *stack_a)
+int	zero_block(t_stack **stack_a)
 {
-	ft_printf("%s\n", "stack_b =");
-	while (stack_a)
+	t_stack *bl;
+
+	bl = *stack_a;
+	while (bl)
 	{
-		ft_printf("b = %d		bl = %d\n", stack_a->data, stack_a->block);
-		stack_a = stack_a->next;
+		bl->block = 0;
+		bl = bl->next;
 	}
-	ft_printf("\n");
+	return (1);
 }

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int ft_rra(t_stack **a, int h)
+int		ft_rra(t_stack **a, int h)
 {
 	t_stack	*new;
 	t_stack	*run;
@@ -31,7 +31,7 @@ int ft_rra(t_stack **a, int h)
 	return (1);
 }
 
-int ft_rrb(t_stack **a, int h)
+int		ft_rrb(t_stack **a, int h)
 {
 	t_stack	*new;
 	t_stack	*run;
@@ -50,15 +50,12 @@ int ft_rrb(t_stack **a, int h)
 	return (1);
 }
 
-
-
 void	ft_rrr(t_stack **a, t_stack **b, int h)
 {
 	t_stack	*new;
 	t_stack	*run;
 
-	if (ft_st_len(*a) < 2 && ft_st_len(*b) < 2)
-		return;
+	(ft_st_len(*a) < 2 && ft_st_len(*b) < 2) ? 0 : ft_printf("%s\n", "rrr");
 	if (ft_st_len(*a) >= 2)
 	{
 		new = ft_stack_new(h);
@@ -81,5 +78,4 @@ void	ft_rrr(t_stack **a, t_stack **b, int h)
 		run->next = NULL;
 		(*b) = new;
 	}
-	ft_printf("%s\n", "rrr");
 }

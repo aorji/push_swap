@@ -12,15 +12,72 @@
 
 #include "push_swap.h"
 
-int		zero_block(t_stack **stack_a)
+int	smaller_that_m(t_stack *st, int med)
 {
-	t_stack *bl;
+	t_stack *s;
 
-	bl = *stack_a;
-	while (bl)
+	s = st;
+	while (s)
 	{
-		bl->block = 0;
-		bl = bl->next;
+		if (s->data < med)
+			return (1);
+		s = s->next;
 	}
-	return (1);
+	return (0);
+}
+
+int	sm_eq_m(t_stack *st, int med)
+{
+	t_stack *s;
+
+	s = st;
+	while (s)
+	{
+		if (s->data <= med)
+			return (1);
+		s = s->next;
+	}
+	return (0);
+}
+
+int	eq(t_stack *st, int med)
+{
+	t_stack *s;
+
+	s = st;
+	while (s)
+	{
+		if (s->data == med)
+			return (1);
+		s = s->next;
+	}
+	return (0);
+}
+
+int	bg_eq_m(t_stack *st, int med)
+{
+	t_stack *s;
+
+	s = st;
+	while (s)
+	{
+		if (s->data >= med)
+			return (1);
+		s = s->next;
+	}
+	return (0);
+}
+
+int	biger_that_m(t_stack *st, int med)
+{
+	t_stack *s;
+
+	s = st;
+	while (s)
+	{
+		if (s->data > med)
+			return (1);
+		s = s->next;
+	}
+	return (0);
 }

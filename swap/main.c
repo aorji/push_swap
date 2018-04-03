@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int check(t_stack *stack_a)
+static	int	check(t_stack *stack_a)
 {
 	int a;
 
@@ -28,10 +28,10 @@ static int check(t_stack *stack_a)
 	return (1);
 }
 
-void	ft_push(char **param)
+void		ft_push(char **param)
 {
-	int len;
-	int	mediana;
+	int		len;
+	int		mediana;
 	t_stack *stack_a;
 	t_stack *stack_b;
 
@@ -41,10 +41,12 @@ void	ft_push(char **param)
 		return ;
 	stack_b = NULL;
 	mediana = ft_mediana(stack_a, ft_st_len(stack_a));
-	ft_sort(1, &stack_a, &stack_b, mediana, len/2);
+	ft_sort(&stack_a, &stack_b, mediana, len / 2);
+	free(stack_a);
+	free(stack_b);
 }
 
-int main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	char **param;
 
@@ -55,5 +57,14 @@ int main(int argc, char **argv)
 	if (argc > 2)
 		param = ++argv;
 	ft_push(param);
-	return 0;
+	if (argc == 2)
+	{
+		while (*param)
+		{
+			ft_strdel(param);
+			param++;
+		}
+	}
+	// system("leaks push_swap");
+	return (0);
 }

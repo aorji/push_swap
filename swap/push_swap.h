@@ -23,7 +23,6 @@ typedef	struct		s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-
 void				ft_push(char **param);
 t_stack				*ft_make_stack(char **param, int len);
 t_stack				*ft_stack_new(int h);
@@ -41,13 +40,23 @@ int 				ft_rra(t_stack **a, int h);
 int 				ft_rrb(t_stack **b, int h);
 void				ft_rrr(t_stack **a, t_stack **b, int h);
 int					ft_sort_3(t_stack **a, int n);
-void				ft_pr_a(t_stack *stack_a);
-void				ft_pr_b(t_stack *stack_a);
+// void				ft_pr_a(t_stack *stack_a);
+// void				ft_pr_b(t_stack *stack_a);
 void 				ft_pr(t_stack *a, t_stack *b);
 int					ft_mediana(t_stack *stack_a, int len);
-int					ft_sort(int a, t_stack **stack_a, t_stack **stack_b, int mediana, int half);
+int					ft_sort(t_stack **stack_a, t_stack **stack_b, int mediana, int half);
 int					ft_mediana_b(t_stack *stack_a, int len);
 int					zero_block(t_stack **stack_a);
 int					ft_st_len_true(t_stack *st);
+int					smaller_that_m(t_stack *st, int med);
+int					sm_eq_m(t_stack *st, int med);
+int					eq(t_stack *st, int med);
+int					bg_eq_m(t_stack *st, int med);
+int					biger_that_m(t_stack *st, int med);
+int					block_len(t_stack *st, int h);
+int					t_block_len(t_stack *st);
+int					count_rr_zero(t_stack *a, int l);
+int					count_rr(t_stack *b, int l);
+int					last(t_stack *stack_a);
 
 #endif

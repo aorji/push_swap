@@ -12,6 +12,38 @@
 
 #include "push_swap.h"
 
+int	block_len(t_stack *st, int h)
+{
+	int		i;
+	t_stack	*s;
+
+	i = 0;
+	s = st;
+	while (s)
+	{
+		if (s->block == h)
+			i++;
+		s = s->next;
+	}
+	return (i);
+}
+
+int	t_block_len(t_stack *st)
+{
+	int		i;
+	t_stack	*s;
+
+	i = 0;
+	s = st;
+	while (s)
+	{
+		if (s->block)
+			i++;
+		s = s->next;
+	}
+	return (i);
+}
+
 int	ft_st_len(t_stack *st)
 {
 	int	i;

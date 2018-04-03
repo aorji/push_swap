@@ -37,9 +37,9 @@ static void	ft_er2(long n, long n1, char *str)
 
 static void	ft_error(char *str, t_stack *stack)
 {
-	long n;
-	long n1;
-	int len;
+	long	n;
+	long	n1;
+	int		len;
 
 	n = ft_atoi(str);
 	n1 = n;
@@ -60,7 +60,7 @@ static void	ft_error(char *str, t_stack *stack)
 	}
 }
 
-t_stack	*ft_stack_new(int h)
+t_stack		*ft_stack_new(int h)
 {
 	t_stack	*new;
 
@@ -71,25 +71,25 @@ t_stack	*ft_stack_new(int h)
 	return (new);
 }
 
-t_stack	*ft_make_stack(char **param, int len)
+t_stack		*ft_make_stack(char **param, int len)
 {
-	int i;
-	t_stack *new;
-	t_stack *head;
+	int		i;
+	t_stack	*new;
+	t_stack	*head;
 
 	if (len == 0)
 		return (NULL);
 	i = 0;
-	new = ft_stack_new(len/2);
+	new = ft_stack_new(len / 2);
 	head = new;
 	while (i < len)
 	{
 		ft_error(param[i], head);
 		new->data = ft_atoi(param[i]);
-		new->block = len/2;
+		new->block = len / 2;
 		if (i + 1 < len)
 		{
-			new->next = ft_stack_new(len/2);
+			new->next = ft_stack_new(len / 2);
 			new = new->next;
 		}
 		i++;
