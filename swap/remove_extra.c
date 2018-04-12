@@ -12,7 +12,15 @@
 
 #include "push_swap.h"
 
-static int	r_len(t_res *st)
+void	fr(t_res *t1, t_res *t2)
+{
+	free(t1->move);
+	free(t2->move);
+	free(t2);
+	free(t1);
+}
+
+int		r_len(t_res *st)
 {
 	int	i;
 
@@ -25,56 +33,49 @@ static int	r_len(t_res *st)
 	return (i);
 }
 
-static void remove_if_two(int len, t_res **h, const char *s1, const char *s2)
+void	remove_if_two(int len, t_res **h, const char *s1, const char *s2)
 {
-	int i;
-	t_res *a;
-	t_res *t1;
-	t_res *t2;
+	int		i;
+	t_res	*a;
+	t_res	*t1;
+	t_res	*t2;
 
-	i = 0;
-	while (*h && (*h)->next && !ft_strcmp((*h)->move, s1) && !ft_strcmp((*h)->next->move, s2))
+	i = -1;
+	while (*h && (*h)->next && !ft_strcmp((*h)->move, s1) &&
+		!ft_strcmp((*h)->next->move, s2))
 	{
 		t1 = (*h);
 		t2 = (*h)->next;
 		(*h) = (*h)->next->next;
-		free(t1->move);
-		free(t2->move);
-		free(t2);
-		free(t1);
+		fr(t1, t2);
 	}
-	while (i < len)
+	while (++i < len && (a = (*h)))
 	{
-		a = (*h);
 		while (a && a->next && a->next->next)
 		{
-			if (!ft_strcmp(a->next->move, s1) && !ft_strcmp(a->next->next->move, s2))
+			if (!ft_strcmp(a->next->move, s1) &&
+				!ft_strcmp(a->next->next->move, s2))
 			{
 				t1 = a->next;
 				t2 = a->next->next;
 				a->next = a->next->next->next;
-				free(t1->move);
-				free(t2->move);
-				free(t2);
-				free(t1);
+				fr(t1, t2);
 			}
 			else
 				a = a->next;
 		}
-		i++;
 	}
 }
 
-static void remove_if_one(t_res **h, const char *s1, const char *s2, const char *s3)
+void	remove_if_one(t_res **h, const char *s1, const char *s2, const char *s3)
 {
-	int i;
-	int len;
-	t_res *t1;
-	t_res *a;
-	char *t2;
-	i = 0;
-	len = r_len(*h);
-	while (i < len)
+	int		i;
+	char	*t2;
+	t_res	*t1;
+	t_res	*a;
+
+	i = -1;
+	while (++i < r_len(*h))
 	{
 		a = (*h);
 		while (a && a->next)
@@ -91,13 +92,12 @@ static void remove_if_one(t_res **h, const char *s1, const char *s2, const char 
 			}
 			a = a->next;
 		}
-		i++;
 	}
 }
 
 void	clean_move(t_res **h)
 {
-	int len;
+	int		len;
 
 	len = r_len(*h);
 	remove_if_two(len, h, "rra", "ra");
@@ -110,5 +110,4 @@ void	clean_move(t_res **h)
 	remove_if_one(h, "rb", "ra", "rr");
 	remove_if_one(h, "rrb", "rra", "rrr");
 	remove_if_one(h, "sb", "sa", "ss");
-	
 }

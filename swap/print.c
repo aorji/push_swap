@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void ft_pr_a(t_stack *stack_a)
+void	ft_pr_a(t_stack *stack_a)
 {
 	ft_printf("%s\n", "stack_a =");
 	while (stack_a)
@@ -23,7 +23,7 @@ void ft_pr_a(t_stack *stack_a)
 	ft_printf("\n");
 }
 
-void ft_pr_b(t_stack *stack_a)
+void	ft_pr_b(t_stack *stack_a)
 {
 	ft_printf("%s\n", "stack_b =");
 	while (stack_a)
@@ -32,4 +32,31 @@ void ft_pr_b(t_stack *stack_a)
 		stack_a = stack_a->next;
 	}
 	ft_printf("\n");
+}
+
+void	ft_print_res(t_res **h, t_flag f, int len)
+{
+	t_res	*tmp;
+	t_res	*header;
+	int		i;
+
+	i = 0;
+	header = *h;
+	while (header)
+	{
+		i++;
+		if (f.c && !header->next)
+			ft_printf("%1b%s%b\n", header->move);
+		else
+			ft_printf("%s\n", header->move);
+		tmp = header;
+		header = header->next;
+		free(tmp->move);
+		free(tmp);
+	}
+	if (f.o)
+		ft_printf("used %d  operations\n", i);
+	if (f.p)
+		ft_printf("sorted %d  parameters\n", len);
+	free(header);
 }

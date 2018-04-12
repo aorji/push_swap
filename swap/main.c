@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-static t_flag check_flags(char ***param, t_flag f)
+static t_flag	check_flags(char ***param, t_flag f)
 {
-	char **p;
-	int i;
+	char	**p;
+	int		i;
 
 	p = *param;
 	i = 0;
@@ -34,7 +34,7 @@ static t_flag check_flags(char ***param, t_flag f)
 	return (f);
 }
 
-static	int	check(t_stack *stack_a)
+static	int		check(t_stack *stack_a)
 {
 	int a;
 
@@ -50,55 +50,33 @@ static	int	check(t_stack *stack_a)
 	return (1);
 }
 
-void		ft_push(char **param, t_flag f)
+void			ft_push(char **param, t_flag f, int len)
 {
-	int		len;
-	int 	i;
 	t_res	*r;
 	t_res	*header;
-	t_res	*tmp;
-	t_stack *t;
+	t_stack *tmp;
 	t_stack *stack_a;
 	t_stack *stack_b;
 
-	i = 0;
-	len = ft_count_param(param);
 	stack_a = ft_make_stack(param, len);
 	if (check(stack_a))
 		return ;
 	stack_b = NULL;
-	r = r_new();
-	r->v = f.v;
+	r = r_new(f.v);
 	header = r;
 	ft_sort(&stack_a, &stack_b, len / 2, &r);
 	clean_move(&header);
-	while (header)
-	{
-		i++;
-		if (f.c && !header->next)
-			ft_printf("%1b%s%b\n", header->move);
-		else
-			ft_printf("%s\n", header->move);
-		tmp = header;
-		header = header->next;
-		free(tmp->move);
-		free(tmp);
-	}
-	if (f.o)
-		ft_printf("used %d  operations\n", i);
-	if (f.p)
-		ft_printf("sorted %d  parameters\n", len);
+	ft_print_res(&header, f, len);
 	while (stack_a)
 	{
-		t = stack_a;
+		tmp = stack_a;
 		stack_a = stack_a->next;
-		free(t);
+		free(tmp);
 	}
 	free(stack_b);
-	free(header);
 }
 
-int			main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	char	**param;
 	t_flag	flags;
@@ -116,15 +94,12 @@ int			main(int argc, char **argv)
 		param = ++argv;
 		flags = check_flags(&param, flags);
 	}
-	ft_push(param, flags);
-	if (argc == 2)
+	ft_push(param, flags, ft_count_param(param));
+	while (argc == 2 && *param)
 	{
-		while (*param)
-		{
-			ft_strdel(param);
-			param++;
-		}
+		ft_strdel(param);
+		param++;
 	}
-	//system("leaks push_swap");
+	system("leaks push_swap");
 	return (0);
 }

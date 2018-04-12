@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   res_string.c                                       :+:      :+:    :+:   */
+/*   ft_flag.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aorji <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/04 16:16:36 by aorji             #+#    #+#             */
-/*   Updated: 2018/04/04 16:16:39 by aorji            ###   ########.fr       */
+/*   Created: 2018/04/12 19:17:05 by aorji             #+#    #+#             */
+/*   Updated: 2018/04/12 19:17:39 by aorji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_res	*r_new(int i)
+int	ft_flag(char *str)
 {
-	t_res	*r;
-
-	r = (t_res *)malloc(sizeof(t_res));
-	r->move = (char*)malloc(sizeof(char) * 4);
-	r->v = i;
-	r->next = NULL;
-	return (r);
-}
-
-void	res_str(t_res **r, const char *s)
-{
-	if (ft_strlen((*r)->move))
-	{
-		(*r)->next = r_new((*r)->v);
-		(*r) = (*r)->next;
-	}
-	(*r)->move = ft_strcpy((*r)->move, s);
+	if (!ft_strcmp(str, "-v") || !ft_strcmp(str, "-p") ||
+		!ft_strcmp(str, "-c") || !ft_strcmp(str, "-o"))
+		return (1);
+	return (0);
 }

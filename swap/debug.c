@@ -12,9 +12,8 @@
 
 #include "push_swap.h"
 
-void debug(t_stack *a, t_stack *b, const char *s)
+void	debug(t_stack *a, t_stack *b, const char *s)
 {
-
 	ft_printf("after \"%s\":\n", s);
 	if (a)
 		ft_pr_a(a);

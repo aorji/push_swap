@@ -49,7 +49,6 @@ static	void	ft_type4(t_stack **stack_a, int h, t_res **r)
 	}
 	else if ((*stack_a)->data > (*stack_a)->next->next->data)
 	{
-	
 		ft_ra(stack_a, h, r);
 		ft_sa(stack_a, r);
 		ft_rra(stack_a, h, r);
