@@ -12,9 +12,10 @@
 
 #include "push_swap.h"
 
-int	ft_pa(t_stack **a, t_stack **b, int half)
+int	ft_pa(t_stack **a, t_stack **b, int half, t_res **r)
 {
 	t_stack *head;
+	t_stack	*tmp;
 
 	if (ft_st_len(*b) < 1)
 		return (1);
@@ -22,15 +23,19 @@ int	ft_pa(t_stack **a, t_stack **b, int half)
 	head->data = (*b)->data;
 	head->block = half;
 	head->next = (*a);
+	tmp = *b;
 	*b = (*b)->next;
+	free(tmp);
 	*a = head;
-	ft_printf("pa\n");
+	r && ((*r)->v) ? debug(*a, *b, "pa") : 0;
+	r ? res_str(r, "pa") : 0;
 	return (1);
 }
 
-int	ft_pb(t_stack **a, t_stack **b, int half)
+int	ft_pb(t_stack **a, t_stack **b, int half, t_res **r)
 {
 	t_stack *head;
+	t_stack	*tmp;
 
 	if (ft_st_len(*a) < 1)
 		return (1);
@@ -38,8 +43,11 @@ int	ft_pb(t_stack **a, t_stack **b, int half)
 	head->data = (*a)->data;
 	head->block = half;
 	head->next = (*b);
+	tmp = *a;
 	*a = (*a)->next;
+	free(tmp);
 	*b = head;
-	ft_printf("pb\n");
+	r && ((*r)->v) ? debug(*a, *b, "pb") : 0;
+	r ? res_str(r, "pb") : 0;
 	return (1);
 }

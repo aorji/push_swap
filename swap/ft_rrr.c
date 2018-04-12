@@ -12,10 +12,11 @@
 
 #include "push_swap.h"
 
-int		ft_rra(t_stack **a, int h)
+int		ft_rra(t_stack **a, int h, t_res **r)
 {
 	t_stack	*new;
 	t_stack	*run;
+	t_stack *tmp;
 
 	if (ft_st_len(*a) < 2)
 		return (1);
@@ -25,16 +26,20 @@ int		ft_rra(t_stack **a, int h)
 	while (run->next->next)
 		run = run->next;
 	new->data = run->next->data;
+	tmp = run->next;
 	run->next = NULL;
+	free(tmp);
 	(*a) = new;
-	ft_printf("%s\n", "rra");
+	r && ((*r)->v) ? debug(*a, NULL, "rra") : 0;
+	r ? res_str(r, "rra") : 0;
 	return (1);
 }
 
-int		ft_rrb(t_stack **a, int h)
+int		ft_rrb(t_stack **a, int h, t_res **r)
 {
 	t_stack	*new;
 	t_stack	*run;
+	t_stack *tmp;
 
 	if (ft_st_len(*a) < 2)
 		return (1);
@@ -44,9 +49,12 @@ int		ft_rrb(t_stack **a, int h)
 	while (run->next->next)
 		run = run->next;
 	new->data = run->next->data;
+	tmp = run->next;
 	run->next = NULL;
+	free(tmp);
 	(*a) = new;
-	ft_printf("%s\n", "rrb");
+	r && ((*r)->v) ? debug(NULL, *a, "rrb") : 0;
+	r ? res_str(r, "rrb") : 0;
 	return (1);
 }
 
@@ -54,8 +62,8 @@ void	ft_rrr(t_stack **a, t_stack **b, int h)
 {
 	t_stack	*new;
 	t_stack	*run;
+	t_stack *tmp;
 
-	(ft_st_len(*a) < 2 && ft_st_len(*b) < 2) ? 0 : ft_printf("%s\n", "rrr");
 	if (ft_st_len(*a) >= 2)
 	{
 		new = ft_stack_new(h);
@@ -64,7 +72,9 @@ void	ft_rrr(t_stack **a, t_stack **b, int h)
 		while (run->next->next)
 			run = run->next;
 		new->data = run->next->data;
+		tmp = run->next;
 		run->next = NULL;
+		free(tmp);
 		(*a) = new;
 	}
 	if (ft_st_len(*b) >= 2)
@@ -75,7 +85,9 @@ void	ft_rrr(t_stack **a, t_stack **b, int h)
 		while (run->next->next)
 			run = run->next;
 		new->data = run->next->data;
+		tmp = run->next;
 		run->next = NULL;
+		free(tmp);
 		(*b) = new;
 	}
 }

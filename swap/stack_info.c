@@ -12,6 +12,13 @@
 
 #include "push_swap.h"
 
+int ft_flag(char *str)
+{
+	if (!ft_strcmp(str, "-v") || !ft_strcmp(str, "-p") || !ft_strcmp(str, "-c") || !ft_strcmp(str, "-o"))
+		return (1);
+	return (0);
+}
+
 int	smaller_that_m(t_stack *st, int med)
 {
 	t_stack *s;

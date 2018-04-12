@@ -76,7 +76,7 @@ int	ft_count_param(char **param)
 	int i;
 
 	i = 0;
-	while (*param)
+	while (*param && !ft_flag(*param))
 	{
 		i++;
 		param++;

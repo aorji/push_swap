@@ -35,12 +35,14 @@ static void	ft_er2(long n, long n1, char *str)
 	}
 }
 
-static void	ft_error(char *str, t_stack *stack)
+static int	ft_error(char *str, t_stack *stack)
 {
 	long	n;
 	long	n1;
 	int		len;
 
+	if (ft_flag(str))
+		return (0);
 	n = ft_atoi(str);
 	n1 = n;
 	if (n >= 0)
@@ -58,6 +60,7 @@ static void	ft_error(char *str, t_stack *stack)
 		stack = stack->next;
 		len--;
 	}
+	return (1);
 }
 
 t_stack		*ft_stack_new(int h)

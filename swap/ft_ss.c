@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ft_sa(t_stack **a)
+void	ft_sa(t_stack **a, t_res **r)
 {
 	int c;
 
@@ -21,10 +21,11 @@ void	ft_sa(t_stack **a)
 	c = (*a)->data;
 	(*a)->data = (*a)->next->data;
 	(*a)->next->data = c;
-	ft_printf("%s\n", "sa");
+	r && ((*r)->v) ? debug(*a, NULL, "sa") : 0;
+	r ? res_str(r, "sa") : 0;
 }
 
-void	ft_sb(t_stack **a)
+void	ft_sb(t_stack **a, t_res **r)
 {
 	int c;
 
@@ -33,7 +34,8 @@ void	ft_sb(t_stack **a)
 	c = (*a)->data;
 	(*a)->data = (*a)->next->data;
 	(*a)->next->data = c;
-	ft_printf("%s\n", "sa");
+	r && ((*r)->v) ? debug(NULL, *a, "sb") : 0;
+	r ? res_str(r, "sb") : 0;
 }
 
 void	ft_ss(t_stack **a, t_stack **b)
@@ -54,5 +56,4 @@ void	ft_ss(t_stack **a, t_stack **b)
 		(*b)->data = (*b)->next->data;
 		(*b)->next->data = c;
 	}
-	ft_printf("%s\n", "ss");
 }
