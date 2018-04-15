@@ -57,7 +57,7 @@ int	ft_st_len(t_stack *st)
 	return (i);
 }
 
-int	ft_st_len_true(t_stack *st)
+int	st_len(t_stack *st)
 {
 	int	i;
 

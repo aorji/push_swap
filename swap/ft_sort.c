@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	ft_sort_b(t_stack **stack_a, t_stack **stack_b, int bl, t_res **r)
+void	ft_sort_b(t_stack **stack_a, t_stack **stack_b, int bl, t_res **r)
 {
 	static int mediana;
 	static int m;
@@ -41,53 +41,31 @@ static void	ft_sort_b(t_stack **stack_a, t_stack **stack_b, int bl, t_res **r)
 	}
 }
 
-int			ft_sort(t_stack **a, t_stack **b, int half, t_res **r)
+int		ft_sort(t_stack **a, t_stack **b, int half, t_res **r)
 {
 	int			bl_len;
-	static int	mm;
-	static int	med;
+	static int	med[2];
 
-	if (!(mm++))
-		med = ft_mediana(*a, ft_st_len(*a));
+	(!(med[1]++)) ? med[0] = ft_mediana(*a, ft_st_len(*a)) : 0;
 	if (!(*a)->block && !ft_st_len(*b))
 		return (1);
 	else if (!t_block_len(*a))
-	{
-		ft_sort_b(a, b, (*b)->block / 2, r);
-		med = ft_mediana_b(*a, block_len(*a, (*a)->block));
-		ft_sort(a, b, (*a)->block, r);
-	}
-	else if ((bl_len = t_block_len(*a)) <= 3 && ((smaller_that_m(*a, med)
-		&& eq(*a, med)) || (!smaller_that_m(*a, med))))
-	{
-		while (count_rr_zero(*a, last(*a)))
-			ft_rra(a, last(*a), r);
-		ft_sort_3(a, bl_len, r);
-		ft_sort(a, b, half, r);
-	}
-	else if ((*a)->data > med && (*a)->block && ft_ra(a, half, r))
+		return (from_1(a, b, r, &med[0]) * ft_sort(a, b, (*a)->block, r));
+	else if ((bl_len = t_block_len(*a)) <= 3 && ((smaller(*a, med[0])
+		&& eq(*a, med[0])) || (!smaller(*a, med[0]))))
+		return (from_2(a, r, bl_len) * ft_sort(a, b, half, r));
+	else if ((*a)->data > med[0] && (*a)->block && ft_ra(a, half, r))
 		return (ft_sort(a, b, half, r));
-	else if ((*a)->data < med && (*a)->block && ft_pb(a, b, half, r))
+	else if ((*a)->data < med[0] && (*a)->block && ft_pb(a, b, half, r))
 	{
-		if (!sm_eq_m(*a, med))
-		{
-			while (count_rr_zero(*a, last(*a)))
-				ft_rra(a, last(*a), r);
-			med = ft_mediana_b(*a, t_block_len(*a));
-			return (ft_sort(a, b, ft_st_len_true(*a) / 2, r));
-		}
+		if (!sm_eq_m(*a, med[0]))
+			return (from_3(a, r, &med[0]) * ft_sort(a, b, st_len(*a) / 2, r));
 		return (ft_sort(a, b, half, r));
 	}
-	else if ((*a)->data == med && !(smaller_that_m(*a, med)) && (*a)->block)
-	{
-		ft_pb(a, b, half, r);
-		while (count_rr_zero(*a, last(*a)))
-			ft_rra(a, last(*a), r);
-		med = ft_mediana_b(*a, t_block_len(*a));
-		return (ft_sort(a, b, ft_st_len_true(*a) / 2, r));
-	}
-	else if ((*a)->data == med && smaller_that_m(*a, med)
-		&& (*a)->block && ft_pb(a, b, half, r))
-		return (ft_sort(a, b, half, r));
+	else if ((*a)->data == med[0] && !(smaller(*a, med[0])) && (*a)->block)
+		return (ft_pb(a, b, half, r) * from_4(a, r, &med[0]) *
+			ft_sort(a, b, st_len(*a) / 2, r));
+	else if ((*a)->data == med[0] && smaller(*a, med[0]) && (*a)->block)
+		return (ft_pb(a, b, half, r) * ft_sort(a, b, half, r));
 	return (1);
 }

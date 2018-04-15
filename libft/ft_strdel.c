@@ -19,5 +19,5 @@ int	ft_strdel(char **as)
 		free(*as);
 		*as = NULL;
 	}
-	return(1);
+	return (1);
 }

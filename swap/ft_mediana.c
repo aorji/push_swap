@@ -48,7 +48,7 @@ int	ft_mediana_b(t_stack *stack_a, int len)
 	med = stack_a;
 	if (!med->block)
 		return (0);
-	if (ft_st_len_true(stack_a) == 1)
+	if (st_len(stack_a) == 1)
 		return (stack_a->data);
 	while (med && med->block)
 	{

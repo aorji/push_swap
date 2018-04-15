@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	smaller_that_m(t_stack *st, int med)
+int	smaller(t_stack *st, int med)
 {
 	t_stack *s;
 

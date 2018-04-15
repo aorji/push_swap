@@ -63,8 +63,8 @@ int					ft_sort(t_stack **stack_a, t_stack **stack_b,
 	int half, t_res **r);
 int					ft_mediana_b(t_stack *stack_a, int len);
 int					zero_block(t_stack **stack_a);
-int					ft_st_len_true(t_stack *st);
-int					smaller_that_m(t_stack *st, int med);
+int					st_len(t_stack *st);
+int					smaller(t_stack *st, int med);
 int					sm_eq_m(t_stack *st, int med);
 int					eq(t_stack *st, int med);
 int					bg_eq_m(t_stack *st, int med);
@@ -89,5 +89,10 @@ void				ft_clean(t_res **a, const char *s1, const char *s2);
 void				ft_print_res(t_res	**h, t_flag f, int len);
 int					f(t_stack **a, t_stack **b, int argc, char ***p);
 void				rm_first(t_res **h, const char *s1, const char *s2);
-
+void				ft_sort_b(t_stack **stack_a, t_stack **stack_b,
+	int bl, t_res **r);
+int					from_1(t_stack **a, t_stack **b, t_res **r, int *med);
+int					from_2(t_stack **a, t_res **r, int bl_len);
+int					from_3(t_stack **a, t_res **r, int *med);
+int					from_4(t_stack **a, t_res **r, int *med);
 #endif
