@@ -65,29 +65,7 @@ void	ft_rrr(t_stack **a, t_stack **b, int h)
 	t_stack *tmp;
 
 	if (ft_st_len(*a) >= 2)
-	{
-		new = ft_stack_new(h);
-		new->next = (*a);
-		run = new->next;
-		while (run->next->next)
-			run = run->next;
-		new->data = run->next->data;
-		tmp = run->next;
-		run->next = NULL;
-		free(tmp);
-		(*a) = new;
-	}
+		ft_rra(a, h, NULL);
 	if (ft_st_len(*b) >= 2)
-	{
-		new = ft_stack_new(h);
-		new->next = (*b);
-		run = new->next;
-		while (run->next->next)
-			run = run->next;
-		new->data = run->next->data;
-		tmp = run->next;
-		run->next = NULL;
-		free(tmp);
-		(*b) = new;
-	}
+		ft_rra(b, h, NULL);
 }

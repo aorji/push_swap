@@ -12,14 +12,6 @@
 
 #include "push_swap.h"
 
-void	fr(t_res *t1, t_res *t2)
-{
-	free(t1->move);
-	free(t2->move);
-	free(t2);
-	free(t1);
-}
-
 int		r_len(t_res *st)
 {
 	int	i;
@@ -33,6 +25,17 @@ int		r_len(t_res *st)
 	return (i);
 }
 
+void	rm_first(t_res **h, const char *s1, const char *s2)
+{
+	t_res	*t1;
+	t_res	*t2;
+
+	t1 = (*h);
+	t2 = (*h)->next;
+	(*h) = (*h)->next->next;
+	fr(t1, t2);
+}
+
 void	remove_if_two(int len, t_res **h, const char *s1, const char *s2)
 {
 	int		i;
@@ -43,12 +46,7 @@ void	remove_if_two(int len, t_res **h, const char *s1, const char *s2)
 	i = -1;
 	while (*h && (*h)->next && !ft_strcmp((*h)->move, s1) &&
 		!ft_strcmp((*h)->next->move, s2))
-	{
-		t1 = (*h);
-		t2 = (*h)->next;
-		(*h) = (*h)->next->next;
-		fr(t1, t2);
-	}
+		rm_first(h, s1, s2);
 	while (++i < len && (a = (*h)))
 	{
 		while (a && a->next && a->next->next)

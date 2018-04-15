@@ -63,28 +63,8 @@ int	ft_rr(t_stack **a, t_stack **b, int h)
 	t_stack	*tmp;
 
 	if (ft_st_len(*a) >= 2)
-	{
-		s = (*a)->data;
-		head = (*a);
-		tmp = (*a);
-		(*a) = (*a)->next;
-		while (head->next)
-			head = head->next;
-		free(tmp);
-		head->next = ft_stack_new(h);
-		head->next->data = s;
-	}
+		ft_ra(a, h, NULL);
 	if (ft_st_len(*b) >= 2)
-	{
-		s = (*b)->data;
-		head = (*b);
-		tmp = (*b);
-		(*b) = (*b)->next;
-		while (head->next)
-			head = head->next;
-		free(tmp);
-		head->next = ft_stack_new(h);
-		head->next->data = s;
-	}
+		ft_rb(b, h, NULL);
 	return (1);
 }

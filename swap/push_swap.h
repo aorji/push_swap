@@ -87,5 +87,7 @@ int					r_len(t_res *st);
 void				fr(t_res *t1, t_res *t2);
 void				ft_clean(t_res **a, const char *s1, const char *s2);
 void				ft_print_res(t_res	**h, t_flag f, int len);
+int					f(t_stack **a, t_stack **b, int argc, char ***p);
+void				rm_first(t_res **h, const char *s1, const char *s2);
 
 #endif

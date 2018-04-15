@@ -100,6 +100,5 @@ int				main(int argc, char **argv)
 		ft_strdel(param);
 		param++;
 	}
-	system("leaks push_swap");
 	return (0);
 }
