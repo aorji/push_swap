@@ -68,7 +68,6 @@ void	remove_if_two(int len, t_res **h, const char *s1, const char *s2)
 void	remove_if_one(t_res **h, const char *s1, const char *s2, const char *s3)
 {
 	int		i;
-	char	*t2;
 	t_res	*t1;
 	t_res	*a;
 
@@ -81,10 +80,8 @@ void	remove_if_one(t_res **h, const char *s1, const char *s2, const char *s3)
 			if (!ft_strcmp(a->move, s1) && !ft_strcmp(a->next->move, s2))
 			{
 				t1 = a->next;
-				t2 = a->move;
 				a->move = ft_strcpy(a->move, s3);
 				a->next = a->next->next;
-				free(t2);
 				free(t1->move);
 				free(t1);
 			}

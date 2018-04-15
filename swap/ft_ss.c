@@ -12,38 +12,40 @@
 
 #include "push_swap.h"
 
-void	ft_sa(t_stack **a, t_res **r)
+int	ft_sa(t_stack **a, t_res **r)
 {
 	int c;
 
 	if (ft_st_len(*a) < 2)
-		return ;
+		return (1);
 	c = (*a)->data;
 	(*a)->data = (*a)->next->data;
 	(*a)->next->data = c;
 	r && ((*r)->v) ? debug(*a, NULL, "sa") : 0;
 	r ? res_str(r, "sa") : 0;
+	return (1);
 }
 
-void	ft_sb(t_stack **a, t_res **r)
+int	ft_sb(t_stack **a, t_res **r)
 {
 	int c;
 
 	if (ft_st_len(*a) < 2)
-		return ;
+		return (1);
 	c = (*a)->data;
 	(*a)->data = (*a)->next->data;
 	(*a)->next->data = c;
 	r && ((*r)->v) ? debug(NULL, *a, "sb") : 0;
 	r ? res_str(r, "sb") : 0;
+	return (1);
 }
 
-void	ft_ss(t_stack **a, t_stack **b)
+int	ft_ss(t_stack **a, t_stack **b)
 {
 	int c;
 
 	if (ft_st_len(*a) < 2 && ft_st_len(*b) < 2)
-		return ;
+		return (1);
 	if (ft_st_len(*a) >= 2)
 	{
 		c = (*a)->data;
@@ -56,4 +58,5 @@ void	ft_ss(t_stack **a, t_stack **b)
 		(*b)->data = (*b)->next->data;
 		(*b)->next->data = c;
 	}
+	return (1);
 }

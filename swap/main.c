@@ -12,28 +12,6 @@
 
 #include "push_swap.h"
 
-static t_flag	check_flags(char ***param, t_flag f)
-{
-	char	**p;
-	int		i;
-
-	p = *param;
-	i = 0;
-	while (p[i])
-	{
-		if (!ft_strcmp(p[i], "-v"))
-			f.v = 1;
-		if (!ft_strcmp(p[i], "-o"))
-			f.o = 1;
-		if (!ft_strcmp(p[i], "-c"))
-			f.c = 1;
-		if (!ft_strcmp(p[i], "-p"))
-			f.p = 1;
-		i++;
-	}
-	return (f);
-}
-
 static	int		check(t_stack *stack_a)
 {
 	int a;

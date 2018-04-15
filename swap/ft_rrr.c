@@ -58,7 +58,7 @@ int		ft_rrb(t_stack **a, int h, t_res **r)
 	return (1);
 }
 
-void	ft_rrr(t_stack **a, t_stack **b, int h)
+int		ft_rrr(t_stack **a, t_stack **b, int h)
 {
 	t_stack	*new;
 	t_stack	*run;
@@ -68,4 +68,5 @@ void	ft_rrr(t_stack **a, t_stack **b, int h)
 		ft_rra(a, h, NULL);
 	if (ft_st_len(*b) >= 2)
 		ft_rra(b, h, NULL);
+	return (1);
 }
