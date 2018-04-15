@@ -16,19 +16,26 @@ static int	next_moves(t_stack **a, t_stack **b, char **line)
 {
 	if (!ft_strcmp("sa", *line) || !ft_strcmp("\x1b[0;36msa\x1b[0m", *line))
 		return (ft_sa(a, NULL));
-	else if (!ft_strcmp("sb", *line) || !ft_strcmp("\x1b[0;36msb\x1b[0m", *line))
+	else if (!ft_strcmp("sb", *line) ||
+		!ft_strcmp("\x1b[0;36msb\x1b[0m", *line))
 		return (ft_sb(b, NULL));
-	else if (!ft_strcmp("ss", *line) || !ft_strcmp("\x1b[0;36mss\x1b[0m", *line))
+	else if (!ft_strcmp("ss", *line) ||
+		!ft_strcmp("\x1b[0;36mss\x1b[0m", *line))
 		return (ft_ss(a, b));
-	else if (!ft_strcmp("pa", *line) || !ft_strcmp("\x1b[0;36mpa\x1b[0m", *line))
+	else if (!ft_strcmp("pa", *line) ||
+		!ft_strcmp("\x1b[0;36mpa\x1b[0m", *line))
 		return (ft_pa(a, b, 1, NULL));
-	else if (!ft_strcmp("pb", *line) || !ft_strcmp("\x1b[0;36mpb\x1b[0m", *line))
+	else if (!ft_strcmp("pb", *line) ||
+		!ft_strcmp("\x1b[0;36mpb\x1b[0m", *line))
 		return (ft_pb(a, b, 1, NULL));
-	else if (!ft_strcmp("ra", *line) || !ft_strcmp("\x1b[0;36mra\x1b[0m", *line))
+	else if (!ft_strcmp("ra", *line) ||
+		!ft_strcmp("\x1b[0;36mra\x1b[0m", *line))
 		return (ft_ra(a, 1, NULL));
-	else if (!ft_strcmp("rb", *line) || !ft_strcmp("\x1b[0;36mrb\x1b[0m", *line))
+	else if (!ft_strcmp("rb", *line) ||
+		!ft_strcmp("\x1b[0;36mrb\x1b[0m", *line))
 		return (ft_rb(b, 1, NULL));
-	else if (!ft_strcmp("rr", *line) || !ft_strcmp("\x1b[0;36mrr\x1b[0m", *line))
+	else if (!ft_strcmp("rr", *line) ||
+		!ft_strcmp("\x1b[0;36mrr\x1b[0m", *line))
 		return (ft_rr(a, b, 1));
 	else
 		return (0);
