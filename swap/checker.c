@@ -103,6 +103,8 @@ int			main(int argc, char **argv)
 		stack_a = stack_a->next;
 		free(t);
 	}
+	if (stack_b)
+		return (ft_printf("KO\n") * f(&stack_a, &stack_b, argc, &param));
 	f(&stack_a, &stack_b, argc, &param);
 	return (ft_printf("OK\n"));
 }
